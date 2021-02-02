@@ -6,6 +6,4 @@ import com.educaweb.demo.entities.User;
 
 public   interface UserRepository extends JpaRepository<User,Long> {
 	
-	
-
 }
