@@ -22,7 +22,7 @@ public class User implements Serializable{
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String  nome, email,phone,pasword;
+	private String  name, email,phone,password;
 	
 	
 	@JsonIgnore
@@ -36,12 +36,12 @@ public class User implements Serializable{
 		
 	}
 
-	public User(Long id, String nome, String email, String phone, String pasword) {
+	public User(Long id, String name, String email, String phone, String password) {
 		this.id = id;
-		this.nome = nome;
+		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.pasword = pasword;
+		this.password = password;
 	}
 
 	public Long getId() {
@@ -53,11 +53,11 @@ public class User implements Serializable{
 	}
 
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -77,11 +77,11 @@ public class User implements Serializable{
 	}
 
 	public String getPasword() {
-		return pasword;
+		return password;
 	}
 
-	public void setPasword(String pasword) {
-		this.pasword = pasword;
+	public void setPasword(String password) {
+		this.password = password;
 	}
 	
 	public List<Order> getOrders() {
