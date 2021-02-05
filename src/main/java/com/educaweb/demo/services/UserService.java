@@ -3,10 +3,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import com.educaweb.demo.entities.User;
 import com.educaweb.demo.repositoris.UserRepository;
+import com.educaweb.demo.services.exceptions.DatabaseException;
 import com.educaweb.demo.services.exceptions.ResouceNotFoundException;
 
 
@@ -28,7 +31,14 @@ public class UserService {
 		return repository.save(obj);
 	}
 	public void delete(Long id) {
-		repository.deleteById(id);
+		try {
+			repository.deleteById(id);
+		}catch(EmptyResultDataAccessException e) {
+			throw new  ResouceNotFoundException(id);
+		}catch(DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
+		
 	}
 	public User update(Long id,User obj) {
 		User entity=repository.getOne(id);
