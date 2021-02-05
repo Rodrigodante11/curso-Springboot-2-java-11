@@ -29,10 +29,7 @@ public class User implements Serializable{
 	@OneToMany(mappedBy= "client")
 	private List<Order> orders=new ArrayList<>();
 	
-
-	
-	
-	public User() {
+public User() {
 		
 	}
 
@@ -76,11 +73,11 @@ public class User implements Serializable{
 		this.phone = phone;
 	}
 
-	public String getPasword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPasword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	
